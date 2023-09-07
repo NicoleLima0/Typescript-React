@@ -20,3 +20,7 @@ function Cidades(){
 
 
 export default Cidades;
+
+// GET - TRAZ DADOS
+// POST - ENVIAR OD DADOS DO NOSSO COMP
+// PUT - UPDATES NOS DADOS
