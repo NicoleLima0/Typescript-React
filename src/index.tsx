@@ -3,8 +3,9 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './componentes/app/App';
 import reportWebVitals from './reportWebVitals';
-import Navbar from './componentes/navBar/Navbar';
+// import Navbar from './componentes/navBar/Navbar';
 import Footer from './componentes/footer/Footer';
+import Card from './componentes/card/Card';
 
 
 const root = ReactDOM.createRoot(
@@ -13,16 +14,17 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <App />
-    <Navbar 
+    {/* <Navbar 
    item1='oii'
    item2={20}
-    />
+    /> */}
     <Footer
     item5='Nicole'
     item6='Matheus'
     item7='Mariana'
     item8='Fernanda'
     />
+    <Card/>
 
   </React.StrictMode>
 );

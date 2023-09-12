@@ -28,32 +28,42 @@ interface Props {
   teste?: boolean;
 }
 
-async function AxiosTeste() {
-  const { data } = await axios.get("https://pokeapi.co/api/v2/pokemon/", {
-    headers: {
-      Accept: "application/json",
-    },
-  });
-  
-  const pokemonNames = data.results.map(
-    (pokemon: { name: string }) => pokemon.name
-  );
+// async function AxiosTeste() {
+//   const { data } = await axios.get("https://pokeapi.co/api/v2/pokemon/", {
+//     headers: {
+//       Accept: "application/json",
+//       //contente-type: "image/png"
+//     },
+//   });
 
-  return console.log(pokemonNames);
-}
+//   const pokemonNames = data.results.map(
+//     (pokemon: { name: string }) => pokemon.name
+//   );
 
-AxiosTeste();
+//   return console.log(pokemonNames);
+// }
 
-function Navbar(props: Props) {
-  return (
-    <div>
-      {props.item1}
-      {props.item2}
-      {Object.keys(Cidades()).map((key) => {
-        return <h1 key={key}>{Cidades()[key as keyof typeof Cidades]}</h1>;
-      })}
-    </div>
-  );
-}
+// AxiosTeste();
 
-export default Navbar;
+// var teste = 1;
+// var number
+
+// if (teste!= 0) {
+//   for (number; teste < 7; teste++) {
+//     console.log(teste);
+//   }
+// }
+
+// function Navbar(props: Props) {
+//   return (
+//     <div>
+//       {props.item1}
+//       {props.item2}
+//       {Object.keys(Cidades()).map((key) => {
+//         return <h1 key={key}>{Cidades()[key as keyof typeof Cidades]}</h1>;
+//       })}
+//     </div>
+//   );
+// }
+
+// export default Navbar;
