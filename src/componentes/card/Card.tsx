@@ -9,8 +9,7 @@ interface Props {
 
 async function GetPokemon() {
   const URL: string = "https://pokeapi.co/api/v2/pokemon/";
-  const { data } = await axios
-    .get(
+    await axios.get(
       URL,
       {
         headers: {
