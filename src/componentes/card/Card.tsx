@@ -7,33 +7,74 @@ interface Props {
   image?: string;
 }
 
-async function GetPokemon() {
-  const URL: string = "https://pokeapi.co/api/v2/pokemon/";
-    await axios.get(
-      URL,
-      {
-        headers: {
-          Accept: "application/json",
-        },
-      }
-      //   const pokemonNames = data.results.map(
-      //     (pokemon: { name: string }) => pokemon.name
-    )
-    .then(function (response) {
-      var pokeName: Object = response.data.pokemon;
-      var logDoConsole = Object.keys(pokeName).map((key) => {
-        var pokeNameMap;
-        pokeNameMap = pokeName[key as keyof typeof pokeName];
-        return pokeNameMap;
-      });
-      return console.log(logDoConsole);
-    })
-
-    .catch();
+interface Pokemon {
+  name: string;
+  url: string;
 }
 
-export default function Card(props: Props) {
-  return <h1> oiii </h1>;
+var pokeImgReturn: string;
+var pokeNameReturn: string;
+
+async function GetPokemon() {
+  const URL: string = "https://pokeapi.co/api/v2/";
+  
+  await axios
+    .get(URL, {
+      headers: {
+        Accept: "application/json",
+      },
+    })
+    .then(async function (response) {
+      var pokeUrl: string = response.data.pokemon;
+      await axios
+        .get(pokeUrl, {
+          headers: {
+            Accept: "Application/json",
+          },
+        })
+        .then(
+          async function (response) {
+          var pokeNameArray = [];
+          var pokeName = [];
+          var pokeUrl = [];
+          pokeNameArray = response.data.results;
+          pokeName = pokeNameArray.map((pokemon: Pokemon) => {
+            return pokemon.name;
+          });
+
+          pokeNameReturn = pokeName[0];
+
+          pokeUrl = pokeNameArray.map((pokemon: Pokemon) => {
+            return pokemon.url;
+          });
+
+          await axios
+            .get(pokeUrl[0], {
+              headers: {
+                Accept: "application/json",
+              },
+            })
+            .then(function (response) {
+              var pokeImgUrl: string;
+              pokeImgUrl = response.data.sprites.front_default;
+              pokeImgReturn = pokeImgUrl;
+
+              return pokeImgUrl;
+            });
+        })
+        .catch();
+    });
 }
 
 GetPokemon();
+
+function Card(props: Props) {
+  return (
+    <div>
+      <h1>{pokeNameReturn}</h1>
+      <img src={pokeImgReturn} />
+    </div>
+  );
+}
+
+export default Card;

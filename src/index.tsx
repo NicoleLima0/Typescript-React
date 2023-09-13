@@ -6,6 +6,7 @@ import reportWebVitals from './reportWebVitals';
 // import Navbar from './componentes/navBar/Navbar';
 import Footer from './componentes/footer/Footer';
 import Card from './componentes/card/Card';
+import Imagem from './componentes/imagem/imagem';
 
 
 const root = ReactDOM.createRoot(
@@ -25,6 +26,7 @@ root.render(
     item8='Fernanda'
     />
     <Card/>
+    <Imagem/>
 
   </React.StrictMode>
 );
